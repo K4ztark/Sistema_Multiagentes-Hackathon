@@ -20,16 +20,30 @@ class Crewhackathon():
     # If you would like to add tools to your agents, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
     @agent
-    def researcher(self) -> Agent:
+    def empresa(self) -> Agent:
         return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
+            config=self.agents_config['empresa'], # type: ignore[index]
             verbose=True
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def consumidor(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
+            config=self.agents_config['consumidor'], # type: ignore[index]
+            verbose=True
+        )
+
+    @agent
+    def estado(self) -> Agent:
+        return Agent(
+            config=self.agents_config['estado'],  # type: ignore[index]
+            verbose=True
+        )
+
+    @agent
+    def inversores(self) -> Agent:
+        return Agent(
+            config=self.agents_config['inversores'],  # type: ignore[index]
             verbose=True
         )
 
@@ -37,16 +51,30 @@ class Crewhackathon():
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
     @task
-    def research_task(self) -> Task:
+    def tarea_empresa(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
+            config=self.tasks_config['tarea_empresa'], # type: ignore[index]
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def tarea_consumidor(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
+            config=self.tasks_config['tarea_consumidor'], # type: ignore[index]
+            #output_file='report.md'
+        )
+
+    @task
+    def tarea_estado(self) -> Task:
+        return Task(
+            config=self.tasks_config['tarea_estado'], # type: ignore[index]
+            #output_file='report.md'
+        )
+
+    @task
+    def tarea_inversor(self) -> Task:
+        return Task(
+            config=self.tasks_config['tarea_inversor'], # type: ignore[index]
+            #output_file='report.md'
         )
 
     @crew

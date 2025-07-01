@@ -1,17 +1,28 @@
-research_task:
+tarea_empresa:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Decidiste {topic}. Esperas ver las reacciones el mercado en general.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Confirmación de {topic}
+  agent: empresa
 
-reporting_task:
+tarea_consumidor:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Evaluas si seguiras comprando en Unautos ante {topic}
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    La decisión del consumidor ante {topic}
+  agent: consumidor
+
+tarea_estado:
+  description: >
+    Determina si se debe intervenir ante {topic} de Unautos, es decir, aumentar, mantener o disminuir los 
+    impuestos a la empresa.
+  expected_output: >
+    Desición sobre la intervención o no intervención, con justificación reducida y concisa.
+  agent: estado
+
+tarea_inversor:
+  description: >
+    Evalua si es viable proveer capital a Unautos despues de {topic}
+  expected_output: >
+    Decisión sobre el financiamiento de la empresa Unautos
+  agent: inversores
