@@ -12,9 +12,6 @@ tarea_consumidor:
   expected_output: >
     La decisión del consumidor ante {topic} en un texto.
   agent: consumidor
-  tools_arguments:
-    EstimarPrecio:
-      argument: "{topic}"
 
 tarea_estado:
   description: >
@@ -24,9 +21,7 @@ tarea_estado:
   expected_output: >
     Desición sobre la intervención o no intervención, con justificación concisa.
   agent: estado
-  tools_arguments:
-    EstimarPrecio:
-      argument: "{topic}"
+
 
 tarea_inversor:
   description: >
@@ -36,8 +31,6 @@ tarea_inversor:
   expected_output: >
     Decisión sobre el financiamiento de la empresa Unautos
   agent: inversores
-  tools_arguments:
-    EstimarPrecio:
-      argument: "{topic}"
+
 
 
