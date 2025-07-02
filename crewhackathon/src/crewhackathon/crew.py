@@ -6,7 +6,7 @@ from typing import List
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
-from .tools.custom_tool import EstimarPrecio
+from .tools.custom_tool import EstimarPrecio, EstimarProduccion
 from .config import Variable
 
 
@@ -33,26 +33,41 @@ class Crewhackathon():
 
     @agent
     def consumidor(self) -> Agent:
+        tools=[]
+        if("aumentar produccion" or "disminuir produccion") in Variable.topic:
+            tools.append(EstimarPrecio())
+        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+            tools.append(EstimarProduccion())
         return Agent(
             config=self.agents_config['consumidor'], # type: ignore[index]
             verbose=True,
-            tools=[EstimarPrecio()]
+            tools=tools
         )
 
     @agent
     def estado(self) -> Agent:
+        tools = []
+        if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
+            tools.append(EstimarPrecio())
+        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+            tools.append(EstimarProduccion())
         return Agent(
             config=self.agents_config['estado'],  # type: ignore[index]
             verbose=True,
-            tools = [EstimarPrecio()]
+            tools = tools
         )
 
     @agent
     def inversores(self) -> Agent:
+        tools = []
+        if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
+            tools.append(EstimarPrecio())
+        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+            tools.append(EstimarProduccion())
         return Agent(
             config=self.agents_config['inversores'],  # type: ignore[index]
             verbose=True,
-            tools=[EstimarPrecio()]
+            tools=tools
         )
 
     # To learn more about structured task outputs,
