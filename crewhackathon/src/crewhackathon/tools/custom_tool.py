@@ -7,7 +7,6 @@ class EstimarPrecioInput(BaseModel):
 
     argument: str = Field(..., description="Ejemplo: 'aumentar produccion 80 %'")
 
-
 class EstimarPrecio(BaseTool):
     name: str = "EstimarPrecio"
     description: str = (
@@ -22,7 +21,7 @@ class EstimarPrecio(BaseTool):
             return "Error: el input debe tener el formato 'aumentar produccion 80 %'"
 
         palabras="".join(lista[0:2])
-        porcentaje=int(lista[2])
+        porcentaje=int((lista[2]).replace("%",""))
 
         if palabras == "aumentarproduccion":
             precio_nuevo = 85000000 * (1-(0.003*porcentaje))

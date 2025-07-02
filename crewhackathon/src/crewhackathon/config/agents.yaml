@@ -7,7 +7,7 @@ empresa:
     Unautos es una empresa líder en la industria de vechículos.Esta empresa siempre busca mantener
     un margen de ganancias alto, por lo tanto evalua subir precios, aumentar, o disminuir la producción.Busca
     adaptarse rápidamente a los cambios de la economía. Unautos suele vender sus carros entre 70 y 100 millones de pesos.
-    La producción de Unautos oscila entre 30 y 45 millones de pesos.
+    La producción de Unautos oscila entre 30 y 45 millones de pesos. Con una producción base aproximada de 200000 vechiculos al año.
 
 consumidor:
   role: >

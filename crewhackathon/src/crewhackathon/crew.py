@@ -7,7 +7,7 @@ from typing import List
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
 from .tools.custom_tool import EstimarPrecio
-
+from .config import Variable
 
 
 
