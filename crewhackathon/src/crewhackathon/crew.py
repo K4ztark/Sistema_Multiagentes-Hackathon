@@ -6,6 +6,11 @@ from typing import List
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
+from crewhackathon.src.crewhackathon.tools.custom_tool import EstimarPrecio
+
+
+
+
 @CrewBase
 class Crewhackathon():
     """Crewhackathon crew"""
@@ -30,21 +35,24 @@ class Crewhackathon():
     def consumidor(self) -> Agent:
         return Agent(
             config=self.agents_config['consumidor'], # type: ignore[index]
-            verbose=True
+            verbose=True,
+            tools=[EstimarPrecio()]
         )
 
     @agent
     def estado(self) -> Agent:
         return Agent(
             config=self.agents_config['estado'],  # type: ignore[index]
-            verbose=True
+            verbose=True,
+            tools = [EstimarPrecio()]
         )
 
     @agent
     def inversores(self) -> Agent:
         return Agent(
             config=self.agents_config['inversores'],  # type: ignore[index]
-            verbose=True
+            verbose=True,
+            tools=[EstimarPrecio()]
         )
 
     # To learn more about structured task outputs,

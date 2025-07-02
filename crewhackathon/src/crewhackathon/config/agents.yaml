@@ -6,7 +6,8 @@ empresa:
   backstory: >
     Unautos es una empresa líder en la industria de vechículos.Esta empresa siempre busca mantener
     un margen de ganancias alto, por lo tanto evalua subir precios, aumentar, o disminuir la producción.Busca
-    adaptarse rápidamente a los cambios de la economía.
+    adaptarse rápidamente a los cambios de la economía. Unautos suele vender sus carros entre 70 y 100 millones de pesos.
+    La producción de Unautos oscila entre 30 y 45 millones de pesos.
 
 consumidor:
   role: >
@@ -23,7 +24,8 @@ estado:
     Regular el mercado
   goal: >
     Eres el gobierno y debes garantizar una competencia equitativa y que el mercado se desarrolle de manera controlada con respecto
-    a lo establecido en la ley
+    a lo establecido en la ley.
+    Analizar las consecuencias económicas y sociales de {topic}
   backstory: >
     Como gobierno regulas el mercado automotriz. Siempre se encarga de que las condiciones laborales sean óptimas
     y que las acciones realizadas por las empresas del gremio esten acorde a las leyes establecidas en la

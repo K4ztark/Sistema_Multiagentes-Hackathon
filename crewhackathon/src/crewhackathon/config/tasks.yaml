@@ -7,22 +7,26 @@ tarea_empresa:
 
 tarea_consumidor:
   description: >
-    Evaluas si seguiras comprando en Unautos ante {topic}
+    Evaluas si seguiras comprando en Unautos ante {topic}, debes tomar una sola desición lo más certera posible ya que se realiza con cifras exactas.
+    Analizas los efectos de {topic} y miras como afecta esta decisión a tu presupuesto, disponibilidad y calidad del producto.
   expected_output: >
-    La decisión del consumidor ante {topic}
+    La decisión del consumidor ante {topic} en un texto.
   agent: consumidor
 
 tarea_estado:
   description: >
     Determina si se debe intervenir ante {topic} de Unautos, es decir, aumentar, mantener o disminuir los 
-    impuestos a la empresa.
+    impuestos a la empresa. Debes tomar una sola decisión objetiva, que no sea ambigua ni que dependa de otros factores.
+    Analizar si {topic} afectará negativamente a los consumidores y la estabilidad económica.
   expected_output: >
-    Desición sobre la intervención o no intervención, con justificación reducida y concisa.
+    Desición sobre la intervención o no intervención, con justificación concisa.
   agent: estado
 
 tarea_inversor:
   description: >
-    Evalua si es viable proveer capital a Unautos despues de {topic}
+    Evalua si es viable proveer capital a Unautos despues de {topic}, debe tomar una decisión objetiva y certera.
+    Estimar el riesgo de pérdida de mercado y disminución de ingresos.
+    Tomar una decisión clara y definitiva: ¿seguir invirtiendo en Unautos, sí o no? Justifica con argumentos financieros y estratégicos
   expected_output: >
     Decisión sobre el financiamiento de la empresa Unautos
   agent: inversores

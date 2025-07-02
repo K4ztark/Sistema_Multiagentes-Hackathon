@@ -7,21 +7,21 @@ from datetime import datetime
 from crewhackathon.crew import Crewhackathon
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from config import Variable
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
 # Replace with inputs you want to test with, it will automatically
 # interpolate any tasks and agents information
-
 def run():
-    """
-    Run the crew.
-    """
     inputs = {
         'topic': input("Aumentar/disminuir precios, aumentar/disminuir producción, aumentar/dismunuir cantidad de empleados y presupuesto:"),
         'current_year': str(datetime.now().year)
     }
-    
+    Variable.topic=inputs['topic']
     try:
         Crewhackathon().crew().kickoff(inputs=inputs)
     except Exception as e:
@@ -60,9 +60,10 @@ def test():
         "topic": input("Aumentar/disminuir precios, aumentar/disminuir producción, aumentar/dismunuir cantidad de empleados y presupuesto:"),
         "current_year": str(datetime.now().year)
     }
-    
+
     try:
         Crewhackathon().crew().test(n_iterations=int(sys.argv[1]), eval_llm=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")
+
