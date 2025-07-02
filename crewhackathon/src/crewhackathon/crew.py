@@ -6,7 +6,7 @@ from typing import List
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
-from crewhackathon.src.crewhackathon.tools.custom_tool import EstimarPrecio
+from .tools.custom_tool import EstimarPrecio
 
 
 
