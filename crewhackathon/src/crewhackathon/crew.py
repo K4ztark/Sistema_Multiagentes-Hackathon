@@ -6,7 +6,7 @@ from typing import List
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
-from .tools.custom_tool import EstimarPrecio, EstimarProduccion
+from .tools.custom_tool import EstimarPrecio, EstimarProduccion, EstimarDemanda, InformeCompetencia
 from .config import Variable
 
 
@@ -33,11 +33,12 @@ class Crewhackathon():
 
     @agent
     def consumidor(self) -> Agent:
-        tools=[]
+        tools=[InformeCompetencia()]
         if("aumentar produccion" or "disminuir produccion") in Variable.topic:
             tools.append(EstimarPrecio())
         elif ("aumentar precio" or "disminuir precio") in Variable.topic:
             tools.append(EstimarProduccion())
+            tools.append(EstimarDemanda())
         return Agent(
             config=self.agents_config['consumidor'], # type: ignore[index]
             verbose=True,
@@ -46,11 +47,12 @@ class Crewhackathon():
 
     @agent
     def estado(self) -> Agent:
-        tools = []
+        tools = [InformeCompetencia()]
         if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
             tools.append(EstimarPrecio())
         elif ("aumentar precio" or "disminuir precio") in Variable.topic:
             tools.append(EstimarProduccion())
+            tools.append(EstimarDemanda())
         return Agent(
             config=self.agents_config['estado'],  # type: ignore[index]
             verbose=True,
@@ -59,11 +61,12 @@ class Crewhackathon():
 
     @agent
     def inversores(self) -> Agent:
-        tools = []
+        tools = [InformeCompetencia()]
         if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
             tools.append(EstimarPrecio())
         elif ("aumentar precio" or "disminuir precio") in Variable.topic:
             tools.append(EstimarProduccion())
+            tools.append(EstimarDemanda())
         return Agent(
             config=self.agents_config['inversores'],  # type: ignore[index]
             verbose=True,

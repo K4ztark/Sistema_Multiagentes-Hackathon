@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class EstimarPrecioInput(BaseModel):
 
-    argument: str = Field(..., description="Ejemplo: 'aumentar produccion 80 %, o disminuir produccion 70 %'")
+    argument: str = Field(..., description="Ejemplo: 'aumentar produccion 80 %, o disminuir produccion 70 %', o aumentar produccion 4 %, o disminuir produccion 4 %")
 
 class EstimarPrecio(BaseTool):
     name: str = "EstimarPrecio"
@@ -34,7 +34,7 @@ class EstimarPrecio(BaseTool):
         return "Error: la acción debe ser 'aumentar produccion' o 'disminuir produccion'."
 
 class EstimarProduccionInput(BaseModel):
-    argument : str = Field(..., description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %'")
+    argument : str = Field(..., description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 4 %, o disminuir precio 4 %'")
 class EstimarProduccion(BaseTool):
     name: str = "EstimarProduccion"
     description: str = (
@@ -52,6 +52,57 @@ class EstimarProduccion(BaseTool):
         if palabras2 == "aumentarprecio":
             produccion_nueva=100000*(1+(0.0045*porcentaje2))
             return f"Si se aumenta el presupuesto de producción un {porcentaje2}%, la producción nueva de autos seria de {produccion_nueva} autos por semestre"
-        elif palabras2 == "disminuirproduccion":
+        elif palabras2 == "disminuirprecio":
             produccion_nueva=100000*(1-(0.0045*porcentaje2))
             return f"Si se disminuye el presupuesto de producción un {porcentaje2}%, la producción nueva de autos seria de {produccion_nueva} autos por semestre"
+
+class EstimarDemandaInput(BaseModel):
+    argument: str = Field(...,description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 4 %, o disminuir precio 4 %'")
+
+class EstimarDemanda(BaseTool):
+    name: str = "EstimarDemanda"
+    description: str = (
+        "Estimar como cambia la demanda en cuestion al cambio del precio de los carros"
+    )
+    args_schema: Type[BaseModel] = EstimarDemandaInput
+
+    def _run(self, argument: str) -> str:
+        lista3=argument.strip().lower().split(" ")
+        if len(lista3) < 3:
+            return "Error: el input debe tener el formato 'aumentar/disminuir precio n %'"
+        palabras3="".join(lista3[0:2])
+        porcentaje3=int((lista3[2]).replace("%",""))
+        if palabras3 == "aumentarprecio":
+            precio_inicial=85000000
+            precio_nuevo=85000000+((porcentaje3/100)*85000000)
+            cambio_precio=(precio_nuevo-precio_inicial)/precio_inicial
+            cambio_demanda=-0.50*cambio_precio
+            demanda_nueva=4000*(1+cambio_demanda)
+            return f"La demanda nueva después de aumentar el precio {porcentaje3}% es de {demanda_nueva} autos mensuales"
+        elif palabras3 == "disminuirprecio":
+            precio_inicial = 85000000
+            precio_nuevo = 85000000 - ((porcentaje3/100)*85000000)
+            cambio_precio = (precio_nuevo - precio_inicial) / precio_inicial
+            cambio_demanda = -0.50 * cambio_precio   #Si el precio se disminuye cambio precio es negativo, luego cambio demanda es positivo (la demanda incrementa si el precio es menor)
+            demanda_nueva = 4000 * (1 + cambio_demanda)
+            return f"La demanda nueva después de disminuir el precio {porcentaje3}% es de {demanda_nueva} autos mensuales"
+
+
+class InformeCompetencia(BaseTool):
+    name: str = "InformeCompetencia"
+    description: str = (
+        "Devuelve un informe simulado sobre el comportamiento reciente de empresas competidoras del sector automotriz."
+    )
+    def _run(self) -> str:
+        #Este es un informe ficticio (simulado) para ver como responde el agente con esta herramienta personalizada
+        informe = """
+            Informe de Competencia:
+
+            - **Toyota**: Ha aumentado su producción en un 5% este trimestre debido a la alta demanda de autos híbridos.
+            - **Renault**: Redujo sus precios un 7% para captar mayor cuota de mercado en LATAM.
+            - **Changan**: Introdujo nuevos modelos eléctricos con precios un 9% por debajo del promedio.
+            - **Chevrolet**: Está enfocando su estrategia en vehículos SUV y ha aumentado su inversión en marketing digital.
+
+Este comportamiento puede afectar la demanda en los segmentos de autos económicos y eléctricos.
+"""
+        return informe

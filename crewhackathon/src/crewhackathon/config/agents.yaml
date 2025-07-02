@@ -8,7 +8,7 @@ empresa:
     un margen de ganancias alto, por lo tanto evalua subir precios, aumentar, o disminuir la producción.Busca
     adaptarse rápidamente a los cambios de la economía. Unautos suele vender sus carros entre 70 y 100 millones de pesos.
     La producción de Unautos oscila entre 30 y 45 millones de pesos. Con una producción base aproximada de 200000 vechiculos al año.
-
+    La demanda mensual de la empresa Unautos es de 4 mil autos mensual
 consumidor:
   role: >
     Comprador de vechículos
@@ -39,3 +39,4 @@ inversores:
   backstory: >  
     Eres un grupo de personas que observan como actúan las empresas y en base a ello tomas la decisión de
     proveer o no capital según las condiciones del mercado.
+
