@@ -34,9 +34,9 @@ class Crewhackathon():
     @agent
     def consumidor(self) -> Agent:
         tools=[InformeCompetencia()]
-        if("aumentar produccion" or "disminuir produccion") in Variable.topic:
+        if ("aumentar produccion" in Variable.topic or "disminuir produccion" in Variable.topic):
             tools.append(EstimarPrecio())
-        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+        elif ("aumentar precio" in Variable.topic or "disminuir precio" in Variable.topic):
             tools.append(EstimarProduccion())
             tools.append(EstimarDemanda())
         return Agent(
@@ -48,9 +48,9 @@ class Crewhackathon():
     @agent
     def estado(self) -> Agent:
         tools = [InformeCompetencia()]
-        if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
+        if ("aumentar produccion" in Variable.topic or "disminuir produccion" in Variable.topic):
             tools.append(EstimarPrecio())
-        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+        elif ("aumentar precio" in Variable.topic or "disminuir precio" in Variable.topic):
             tools.append(EstimarProduccion())
             tools.append(EstimarDemanda())
         return Agent(
@@ -62,9 +62,9 @@ class Crewhackathon():
     @agent
     def inversores(self) -> Agent:
         tools = [InformeCompetencia()]
-        if ("aumentar produccion" or "disminuir produccion") in Variable.topic:
+        if ("aumentar produccion" in Variable.topic or "disminuir produccion" in Variable.topic):
             tools.append(EstimarPrecio())
-        elif ("aumentar precio" or "disminuir precio") in Variable.topic:
+        elif ("aumentar precio" in Variable.topic or "disminuir precio" in Variable.topic):
             tools.append(EstimarProduccion())
             tools.append(EstimarDemanda())
         return Agent(

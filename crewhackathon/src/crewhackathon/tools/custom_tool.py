@@ -24,7 +24,7 @@ class EstimarPrecio(BaseTool):
         porcentaje=int((lista[2]).replace("%",""))
 
         if palabras == "aumentarproduccion":
-            precio_nuevo = 85000000 * (1-(0.003*porcentaje))
+            precio_nuevo = 85000000 * (1-(0.003*porcentaje)) #funcion que modela el cambio de precio por produccion, se toma como base un precio de 80000000
             return f"Si se aumenta la producción un {porcentaje}%, el nuevo precio del auto será de {precio_nuevo} pesos."
 
         elif palabras == "disminuirproduccion":
