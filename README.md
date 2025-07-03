@@ -3,7 +3,7 @@
 
 ### Descripción del problema
 
-El sistema simula un escenario económico en el que una empresa de autos ficticia, **'Unautos'**, debe tomar decisiones estratégicas sobre su producción y precios. Estas decisiones afectan directamente a tres sectores clave: el **consumidor**,el **Estado** y los **Inversores**.
+El sistema simula un escenario económico en el que una empresa de autos ficticia, **'Unautos'**, debe tomar decisiones estratégicas sobre su producción y precios. Estas decisiones afectan directamente a tres sectores clave: el **consumidor**,el **Estado** y los **Inversores**. Además se tiene un agente extra **Analista de crecimiento** el cual aporta información acerca del crcimiento aproximado de la empresa en el tiempo establecido correspondiente con las decisiones tomadas por la misma.
 
 Cada decisión impacta el equilibrio entre oferta, demanda y regulación económica. El reto consiste en evaluar estas decisiones desde distintas perspectivas para predecir reacciones del mercado (consumidor, estado e inversores) y tomar decisiones con base a datos fundamentados.
 
@@ -24,6 +24,9 @@ El sistema utiliza una arquitectura de **sistema multiagente**, donde cada agent
   
 - **Agente Inversores**
   Determinan si es viable seguir aportando capital a la empresa **Unautos**.
+  
+- **Agente Analista de crecimiento**
+  Determina aproximadamente el crecimiento o decrecimiento de la empresa.
 ---
 
 ### Cómo contribuyen los agentes a la solución
