@@ -126,12 +126,12 @@ class EstimarCrecimiento(BaseTool):
 
         if palabras4 == "aumentarprecio":
             tasa_impacto=0.005
-            crecimiento=1040000000000*((porcentaje4/100)*tasa_impacto) #1040000000000 es los ingresos promedios de una empresa automovilistica semestralmente.
+            crecimiento=1040000000000*((porcentaje4)*tasa_impacto) #1040000000000 es los ingresos promedios de una empresa automovilistica semestralmente.
             crecimiento_porcentaje=(crecimiento*100)/1040000000000
             return f"Después de aumentar los precios {porcentaje4}% la empresa ha crecido {crecimiento_porcentaje}%"
         elif palabras4 == "disminuirprecio":
             tasa_impacto=0.007
-            crecimiento = 1040000000000 * ((porcentaje4/100) * tasa_impacto)
+            crecimiento = 1040000000000 * ((porcentaje4) * tasa_impacto)
             crecimiento_porcentaje = (crecimiento * 100) / 1040000000000
             return f"Después de aumentar los precios {porcentaje4}% la empresa ha crecido {crecimiento_porcentaje}%"
 
