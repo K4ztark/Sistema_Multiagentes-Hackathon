@@ -106,3 +106,32 @@ class InformeCompetencia(BaseTool):
 Este comportamiento puede afectar la demanda en los segmentos de autos económicos y eléctricos.
 """
         return informe
+
+class EstimarCrecimientoInput(BaseModel):
+    argument: str = Field(...,description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 6 %, o disminuir precio 6 %'")
+
+class EstimarCrecimiento(BaseTool):
+    name: str = "EstimarCrecimiento"
+    description: str = (
+        "Devuelve el crecimiento aproximado de una empresa respecto al aumento o disminución de precios"
+    )
+    args_schema: Type[BaseModel] = EstimarCrecimientoInput
+
+    def _run(self, argument: str) -> str:
+        lista4 = argument.strip().lower().split(" ")
+        if len(lista4) < 3:
+            return "Error: el input debe tener el formato 'aumentar/disminuir precio n %'"
+        palabras4 = "".join(lista4[0:2])
+        porcentaje4 = int((lista4[2]).replace("%", ""))
+
+        if palabras4 == "aumentarprecio":
+            tasa_impacto=0.005
+            crecimiento=1040000000000*((porcentaje4/100)*tasa_impacto) #1040000000000 es los ingresos promedios de una empresa automovilistica semestralmente.
+            crecimiento_porcentaje=(crecimiento*100)/1040000000000
+            return f"Después de aumentar los precios {porcentaje4}% la empresa ha crecido {crecimiento_porcentaje}%"
+        elif palabras4 == "disminuirprecio":
+            tasa_impacto=0.007
+            crecimiento = 1040000000000 * ((porcentaje4/100) * tasa_impacto)
+            crecimiento_porcentaje = (crecimiento * 100) / 1040000000000
+            return f"Después de aumentar los precios {porcentaje4}% la empresa ha crecido {crecimiento_porcentaje}%"
+

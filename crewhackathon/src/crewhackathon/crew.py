@@ -6,7 +6,7 @@ from typing import List
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
-from .tools.custom_tool import EstimarPrecio, EstimarProduccion, EstimarDemanda, InformeCompetencia
+from .tools.custom_tool import EstimarPrecio, EstimarProduccion, EstimarDemanda, InformeCompetencia, EstimarCrecimiento
 from .config import Variable
 
 
@@ -72,6 +72,14 @@ class Crewhackathon():
             verbose=True,
             tools=tools
         )
+    @agent
+    def analista_de_crecimiento(self) -> Agent:
+        return Agent(
+            config=self.agents_config['analista_de_crecimiento'],  # type: ignore[index]
+            verbose=True,
+            tools=[EstimarCrecimiento()]
+        )
+
 
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
@@ -100,6 +108,13 @@ class Crewhackathon():
     def tarea_inversor(self) -> Task:
         return Task(
             config=self.tasks_config['tarea_inversor'], # type: ignore[index]
+            #output_file='report.md'
+        )
+
+    @task
+    def tarea_analista_de_crecimiento(self) -> Task:
+        return Task(
+            config=self.tasks_config['tarea_analista_de_crecimiento'], # type: ignore[index]
             #output_file='report.md'
         )
 
