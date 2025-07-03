@@ -42,4 +42,4 @@ Cada agente procesa información específica mediante tareas definidas. Estas ta
 
 Esta colaboración inteligente permite anticipar conflictos, evaluar escenarios y tomar decisiones más informadas, todo dentro de un entorno automatizado, flexible y replicable.
 
-**Nota:** Para correr el proyecto se debe crear el entorno virtual y poner el model y la api key en el archivo .env. A su vez descargar las librerias necesarias.
+**Nota:** Para correr el proyecto se debe crear el entorno virtual y poner el model y la api key en el archivo .env. En el proyecto se encuentra el archivo requeriments.txt donde se descargan automaticamente las librerias necesarias.
