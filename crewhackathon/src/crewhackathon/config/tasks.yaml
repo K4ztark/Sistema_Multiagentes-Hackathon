@@ -32,5 +32,21 @@ tarea_inversor:
     Decisión sobre el financiamiento de la empresa Unautos
   agent: inversores
 
+tarea_analista_de_crecimiento:
+  description: >
+    Estima cual será el crecimiento aproximado de Unautos despues de {topic}, debe otogar una descripción acerca de cual 
+    será su posición en el mercado respecto a otros competidores. Debe ser claro a la hora de explicar por que se da un 
+    aumento o disminución en el crecimiento de la empresa, puede apoyarse de herramientas matemátivcas para realizar 
+    cálculos pero debe integrar análisis de datos matemáticos con las demás características del mercado como una 
+    proyección de la posible oferta y demanda en el mercado
+
+  expected_output: >
+    Proyección del posible crecimiento de la empresa en el período de tiempo correspondiente y su posición frente a 
+    competidores dentro del mercado. Entrega una descripción del posible crecimiento de la empresa teniendo en cuenta 
+    los datos proporcionados en {topic}, e integrandolos con proyeciones de las posibles reacciones en el mercado, 
+    principalmente en aspectos como la oferta y la demanda.
+
+  agent: analista_de_crecimiento
+
 
 
