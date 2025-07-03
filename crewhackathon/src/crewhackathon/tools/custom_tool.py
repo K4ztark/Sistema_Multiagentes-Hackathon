@@ -1,11 +1,11 @@
 from crewai.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field
-
+from typing import Type
 
 class EstimarPrecioInput(BaseModel):
 
-    argument: str = Field(..., description="Ejemplo: 'aumentar produccion 80 %, o disminuir produccion 70 %', o aumentar produccion 4 %, o disminuir produccion 4 %")
+    argument: str = Field(..., description="Indica la acción en el formato. Ejemplo: 'aumentar produccion 80 %, o disminuir produccion 70 %', o aumentar produccion 4 %, o disminuir produccion 4 %")
 
 class EstimarPrecio(BaseTool):
     name: str = "EstimarPrecio"
@@ -34,7 +34,7 @@ class EstimarPrecio(BaseTool):
         return "Error: la acción debe ser 'aumentar produccion' o 'disminuir produccion'."
 
 class EstimarProduccionInput(BaseModel):
-    argument : str = Field(..., description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 4 %, o disminuir precio 4 %'")
+    argument : str = Field(..., description="Indica la acción en el formato. Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 4 %, o disminuir precio 4 %'")
 class EstimarProduccion(BaseTool):
     name: str = "EstimarProduccion"
     description: str = (
@@ -62,8 +62,9 @@ class EstimarDemandaInput(BaseModel):
 class EstimarDemanda(BaseTool):
     name: str = "EstimarDemanda"
     description: str = (
-        "Estimar como cambia la demanda en cuestion al cambio del precio de los carros"
+        "Estimar como cambia la demanda en cuestion al cambio del precio de los carros, es decir, aumenta 10 % por ejemplo entonces la demanda disminuye"
     )
+
     args_schema: Type[BaseModel] = EstimarDemandaInput
 
     def _run(self, argument: str) -> str:
@@ -108,7 +109,7 @@ Este comportamiento puede afectar la demanda en los segmentos de autos económic
         return informe
 
 class EstimarCrecimientoInput(BaseModel):
-    argument: str = Field(...,description="Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 6 %, o disminuir precio 6 %'")
+    argument: str = Field(...,description="Indica la acción en el formato. Ejemplo: 'aumentar precio 80 %, o disminuir precio 70 %, o aumentar precio 6 %, o disminuir precio 6 %'")
 
 class EstimarCrecimiento(BaseTool):
     name: str = "EstimarCrecimiento"
@@ -134,4 +135,3 @@ class EstimarCrecimiento(BaseTool):
             crecimiento = 1040000000000 * ((porcentaje4) * tasa_impacto)
             crecimiento_porcentaje = (crecimiento * 100) / 1040000000000
             return f"Después de aumentar los precios {porcentaje4}% la empresa ha crecido {crecimiento_porcentaje}%"
-

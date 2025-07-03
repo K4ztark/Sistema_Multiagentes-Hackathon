@@ -12,6 +12,8 @@ tarea_consumidor:
   expected_output: >
     La decisión del consumidor ante {topic} en un texto.
   agent: consumidor
+  input:
+    argument: "{{topic}}"
 
 tarea_estado:
   description: >
@@ -21,6 +23,9 @@ tarea_estado:
   expected_output: >
     Desición sobre la intervención o no intervención, con justificación concisa.
   agent: estado
+  input:
+    argument: "{{topic}}"
+
 
 
 tarea_inversor:
@@ -31,6 +36,9 @@ tarea_inversor:
   expected_output: >
     Decisión sobre el financiamiento de la empresa Unautos
   agent: inversores
+  input:
+    argument: "{{topic}}"
+
 
 tarea_analista_de_crecimiento:
   description: >
@@ -39,6 +47,8 @@ tarea_analista_de_crecimiento:
     aumento o disminución en el crecimiento de la empresa, puede apoyarse de herramientas matemátivcas para realizar 
     cálculos pero debe integrar análisis de datos matemáticos con las demás características del mercado como una 
     proyección de la posible oferta y demanda en el mercado
+  input:
+    argument: "{{topic}}"
 
   expected_output: >
     Proyección del posible crecimiento de la empresa en el período de tiempo correspondiente y su posición frente a 
@@ -48,5 +58,12 @@ tarea_analista_de_crecimiento:
 
   agent: analista_de_crecimiento
 
+tarea_escritor:
+  description : >
+    Recoge todos los textos de los agentes y guárdalas en un archivo"
+  
+  expected_output: >
+    Texto consolidado de los agentes almacenado en un archivo .txt, además pone el titulo del agente correspondiente al texto
 
+  agent: escritor
 

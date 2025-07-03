@@ -79,7 +79,12 @@ class Crewhackathon():
             verbose=True,
             tools=[EstimarCrecimiento()]
         )
-
+    @agent
+    def escritor(self) -> Agent:
+        return Agent(
+            config=self.agents_config['escritor'],  # type: ignore[index]
+            verbose=True,
+        )
 
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
@@ -117,7 +122,12 @@ class Crewhackathon():
             config=self.tasks_config['tarea_analista_de_crecimiento'], # type: ignore[index]
             #output_file='report.md'
         )
-
+    @task
+    def tarea_escritor(self) -> Task:
+        return Task(
+            config=self.tasks_config['tarea_escritor'], # type: ignore[index]
+            output_file='report.md'
+        )
     @crew
     def crew(self) -> Crew:
         """Creates the Crewhackathon crew"""

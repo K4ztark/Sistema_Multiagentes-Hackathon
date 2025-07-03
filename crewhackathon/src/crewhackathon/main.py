@@ -18,7 +18,7 @@ from .config import Variable
 # interpolate any tasks and agents information
 def run():
     inputs = {
-        'topic': input("Aumentar/disminuir precios, aumentar/disminuir producción, aumentar/dismunuir cantidad de empleados y presupuesto:"),
+        'topic': input("aumentar/disminuir precio n % (n entero) (el precio se relaciona con el presupuesto), aumentar/disminuir produccion n % (n entero): "),
         'current_year': str(datetime.now().year)
     }
     Variable.topic=inputs['topic']

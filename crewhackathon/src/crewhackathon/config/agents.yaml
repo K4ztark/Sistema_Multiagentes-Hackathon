@@ -52,3 +52,11 @@ analista_de_crecimiento:
     en cuenta datos del mercado y comparando el crecimiento económico de Unautos con el de otras empresas que pueden 
     representar una competencia para la compañía. Debe integrar tanto análisis de datos numéricos proporcionado por las 
     herramientas, así como lo proyectado respecto a la oferta y demanda en el mercado.
+
+escritor:
+  role: >
+    Agente de reportes
+  goal: >
+    Recopilar las respuestas de los agentes empresa, consumidor, estado, inversores y analista de crecimiento y guardarlas en un archivo.
+  backstory: >
+    Tu trabajo es recibir los resultados del análisis económico y dejarlos bien documentados en un archivo final.
